@@ -6,14 +6,23 @@
 Welcome to Google UI tests - A pytest-bdd approach's documentation!
 ===================================================================
 
+Summary
+*******
+
+This is an example to show how you can create documentation for a Web UI
+test automation code.
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
-
+   page_objects
+   step_definitions
+   features
+   
 
 Indices and tables
-==================
+******************
 
 * :ref:`genindex`
 * :ref:`modindex`
