@@ -13,10 +13,10 @@ This is an example to show how you can create documentation for a Web UI
 test automation code.
 
 .. note::
-   This project follows the Page Object pattern. You can learn more about this
-   pattern `here`_. For more complex projects, check out the `Screenplay Pattern`_.
+   This project follows the `Page Object Pattern`_. 
+   For more complex projects, check out the `Screenplay Pattern`_.
    
-.. _here: https://www.pluralsight.com/guides/getting-started-with-page-object-pattern-for-your-selenium-tests
+.. _Page Object Pattern: https://www.pluralsight.com/guides/getting-started-with-page-object-pattern-for-your-selenium-tests
 .. _Screenplay Pattern: https://serenity-js.org/handbook/thinking-in-serenity-js/screenplay-pattern.html
 
 .. toctree::
