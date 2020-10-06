@@ -22,29 +22,45 @@ from selenium.webdriver.common.by import By
 class GoogleSearchResults:
     """Class for creating a GoogleSearchResult object.
 
-    :param search_input: 
-    :type search_input:
-    :param result_links:
-    :type result_links:
-    :param browser:
-    :type browser:
+    :param search_input: Locator for the search input
+    :type search_input: Tuple[By.locator_strategy, locator]
+    :param result_links: List of result links
+    :type result_links: List[str]
+    :param webdriver: selenium Webdriver object which can be used to
+        interact with the web elements
+    :type webdriver:
     """
 
     search_input = (By.NAME, 'q')
     result_links = (By.CSS_SELECTOR, "div[id='rso'] div[class='yuRUbf']")
 
-    def __init__(self, browser) -> None:
-        self.browser = browser
+    def __init__(self, webdriver) -> None:
+        self.webdriver = webdriver
 
     def get_result_link_titles(self) -> list:
-        links = self.browser.find_elements(*self.result_links)
+        """Collects the titles for all the results on the page.
+
+        :return: List of titles
+        :rtype: List[str]
+        """
+        links = self.webdriver.find_elements(*self.result_links)
         titles = [link.text for link in links]
         return titles
 
     def get_search_input_value(self) -> str:
-        input_field = self.browser.find_element(*self.search_input)
+        """Returns the search phrase used for the search.
+
+        :return: The search basis
+        :rtype: str
+        """
+        input_field = self.webdriver.find_element(*self.search_input)
         return input_field.get_attribute('value')
 
     @property
     def title(self) -> str:
-        return self.browser.title
+        """Property to return the page title
+
+        :return: Page title
+        :rtype: str
+        """
+        return self.webdriver.title

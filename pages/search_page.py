@@ -34,9 +34,9 @@ class GoogleSearchPage:
     :type consent_iframe: Tuple[By.locator_strategy, locator]
     :param agree_button: Button to accept all cookies
     :type agree_button: Tuple[By.locator_strategy, locator]
-    :param browser: selenium Webdriver object, like
-        :class:`selenium.webdriver.Chrome()`
-    :type browser: selenium.Webdriver
+    :param webdriver: selenium Webdriver object which can be used to
+        interact with the web elements
+    :type webdriver: selenium.Webdriver
     """
 
     url: ClassVar[str] = 'https://google.com'
@@ -46,20 +46,20 @@ class GoogleSearchPage:
     agree_button: ClassVar[Tuple[ByObject, str]] = (By.CSS_SELECTOR,
                                                     "div[id=introAgreeButton]")
 
-    def __init__(self, browser: Webdriver) -> None:
-        self.browser = browser
+    def __init__(self, webdriver: Webdriver) -> None:
+        self.webdriver = webdriver
 
     def load(self) -> None:
         """Loads the search page.
         """
-        self.browser.get(self.url)
+        self.webdriver.get(self.url)
 
     def agree_to_cookies(self) -> None:
         """Agrees to all cookies to be able to start using the search page.
         """
-        frame = self.browser.find_element(*self.consent_iframe)
-        self.browser.switch_to.frame(frame)
-        button = self.browser.find_element(*self.agree_button)
+        frame = self.webdriver.find_element(*self.consent_iframe)
+        self.webdriver.switch_to.frame(frame)
+        button = self.webdriver.find_element(*self.agree_button)
         button.click()
 
     def search(self, phrase: str) -> None:
@@ -68,5 +68,5 @@ class GoogleSearchPage:
         :param phrase: Search phrase
         :type phrase: str
         """
-        search_input = self.browser.find_element(*self.search_input)
+        search_input = self.webdriver.find_element(*self.search_input)
         search_input.send_keys(phrase + Keys.RETURN)
