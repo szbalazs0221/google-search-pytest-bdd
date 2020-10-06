@@ -15,8 +15,13 @@ Example
 >>> page.get_result_link_titles()
 ['result_link_1', 'result_link_2', ...]
 """
+from typing import Any, ClassVar, Tuple, Type
 
+import selenium.webdriver
 from selenium.webdriver.common.by import By
+
+Webdriver = Any
+ByObject = Type[selenium.webdriver.common.by.By]
 
 
 class GoogleSearchResults:
@@ -31,10 +36,13 @@ class GoogleSearchResults:
     :type webdriver:
     """
 
-    search_input = (By.NAME, 'q')
-    result_links = (By.CSS_SELECTOR, "div[id='rso'] div[class='yuRUbf']")
+    search_input: ClassVar[Tuple[ByObject, str]] = (By.NAME, 'q')
+    result_links: ClassVar[Tuple[ByObject, str]] = (
+        By.CSS_SELECTOR,
+        "div[id='rso'] div[class='yuRUbf']"
+    )
 
-    def __init__(self, webdriver) -> None:
+    def __init__(self, webdriver: Any) -> None:
         self.webdriver = webdriver
 
     def get_result_link_titles(self) -> list:

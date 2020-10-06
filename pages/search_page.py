@@ -12,7 +12,7 @@ Example:
 >>> page.search('car')
 """
 
-from typing import ClassVar, Tuple, Type, Any
+from typing import Any, ClassVar, Tuple, Type
 
 import selenium.webdriver
 from selenium.webdriver.common.by import By
