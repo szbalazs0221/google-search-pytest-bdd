@@ -12,12 +12,14 @@ Example:
 >>> page.search('car')
 """
 
-from typing import Any
+from typing import ClassVar, Tuple, Type, Any
 
+import selenium.webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 Webdriver = Any
+ByObject = Type[selenium.webdriver.common.by.By]
 
 
 class GoogleSearchPage:
@@ -32,13 +34,17 @@ class GoogleSearchPage:
     :type consent_iframe: Tuple[By.locator_strategy, locator]
     :param agree_button: Button to accept all cookies
     :type agree_button: Tuple[By.locator_strategy, locator]
+    :param browser: selenium Webdriver object, like
+        :class:`selenium.webdriver.Chrome()`
+    :type browser: selenium.Webdriver
     """
 
-    url = 'https://google.com'
-
-    search_input = (By.NAME, 'q')
-    consent_iframe = (By.CSS_SELECTOR, 'div[id=cnsw] iframe')
-    agree_button = (By.CSS_SELECTOR, "div[id=introAgreeButton]")
+    url: ClassVar[str] = 'https://google.com'
+    search_input: ClassVar[Tuple[ByObject, str]] = (By.NAME, 'q')
+    consent_iframe: ClassVar[Tuple[ByObject, str]] = (By.CSS_SELECTOR,
+                                                      'div[id=cnsw] iframe')
+    agree_button: ClassVar[Tuple[ByObject, str]] = (By.CSS_SELECTOR,
+                                                    "div[id=introAgreeButton]")
 
     def __init__(self, browser: Webdriver) -> None:
         self.browser = browser
