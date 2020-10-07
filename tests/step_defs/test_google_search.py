@@ -10,17 +10,11 @@ from pages.search_results import GoogleSearchResults
 def test_search():
     pass
 
-@given('the Google Search page is displayed', target_fixture="search_page")
-def display_search_page(webdriver):
-    page = GoogleSearchPage(webdriver)
-    page.load()
-    page.agree_to_cookies()
-    page.switch_to_english()
-    return page
 
 @when('the user search for the phrase car')
 def search_phrase(search_page):
     search_page.search('Car')
+
 
 @then('the results are shown for car')
 def search_results(webdriver):

@@ -41,6 +41,7 @@ class GoogleSearchResults:
         By.CSS_SELECTOR,
         "div[id='rso'] div[class='yuRUbf']"
     )
+    calculator_display: ClassVar[Tuple[ByObject, str]] = (By.ID, 'cwos')
 
     def __init__(self, webdriver: Any) -> None:
         self.webdriver = webdriver
@@ -63,6 +64,9 @@ class GoogleSearchResults:
         """
         input_field = self.webdriver.find_element(*self.search_input)
         return input_field.get_attribute('value')
+
+    def show_calculator_display(self) -> int:
+        return self.webdriver.find_element(*self.calculator_display).text
 
     @property
     def title(self) -> str:

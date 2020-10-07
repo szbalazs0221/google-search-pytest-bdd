@@ -2,10 +2,13 @@
 import pytest
 import selenium.webdriver
 
+from pytest_bdd import given
+from pages.search_page import GoogleSearchPage
+
 CHROME = 'Chrome'
 FIREFOX = 'Firefox'
 IE = 'IE'
-SAFARI= 'Safari'
+SAFARI = 'Safari'
 
 
 @pytest.fixture()
@@ -35,11 +38,6 @@ def webdriver(request):
     yield browser
     browser.quit()
 
-CHROME = 'Chrome'
-FIREFOX = 'Firefox'
-IE = 'IE'
-SAFARI= 'Safari'
-
 
 def pytest_addoption(parser):
     """Custom command line options.
@@ -52,3 +50,16 @@ def pytest_addoption(parser):
         action='store',
         choices=[CHROME, FIREFOX, IE, SAFARI],
         required=True)
+
+
+@given('the Google Search page is displayed', target_fixture="search_page")
+def display_search_page(webdriver):
+    page = GoogleSearchPage(webdriver)
+    page.load()
+    page.agree_to_cookies()
+    page.switch_to_english()
+    return page
+
+
+def pytest_bdd_step_error(step_func_args):
+    step_func_args['webdriver'].save_screenshot("screenshot.png")
