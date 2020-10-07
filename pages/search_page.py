@@ -45,6 +45,8 @@ class GoogleSearchPage:
                                                       'div[id=cnsw] iframe')
     agree_button: ClassVar[Tuple[ByObject, str]] = (By.CSS_SELECTOR,
                                                     "div[id=introAgreeButton]")
+    english_lang: ClassVar[Tuple[ByObject, str]] = (By.CSS_SELECTOR, 
+                                                    "div[id='SIvCob'] a")
 
     def __init__(self, webdriver: Webdriver) -> None:
         self.webdriver = webdriver
@@ -61,6 +63,12 @@ class GoogleSearchPage:
         self.webdriver.switch_to.frame(frame)
         button = self.webdriver.find_element(*self.agree_button)
         button.click()
+
+    def switch_to_english(self) -> None:
+        """Changes the language to English.
+        """
+        link = self.webdriver.find_element(*self.english_lang)
+        link.click()
 
     def search(self, phrase: str) -> None:
         """Initiate a search on the search page with the given phrase.
