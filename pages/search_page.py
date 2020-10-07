@@ -1,8 +1,8 @@
 """This module contains a :class:`GoogleSearchPage` class. Instances of this
 class can be used in tests to interact with the search page.
 
-Example:
-========
+Example
+=======
 >>> import selenium.webdriver
 >>> b = selenium.webdriver.Chrome()
 >>> b.implicitly_wait(10)
