@@ -26,6 +26,7 @@ test automation code.
    page_objects
    step_definitions
    features
+   pytest_setups
 
 
 
