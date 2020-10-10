@@ -48,7 +48,3 @@ def display_search_page(webdriver):
     page.agree_to_cookies()
     page.switch_to_english()
     return page
-
-
-def pytest_bdd_step_error(step_func_args):
-    step_func_args['webdriver'].save_screenshot("screenshot.png")
