@@ -12,7 +12,7 @@ def pytest_addoption(parser):
     parser.addoption(
         "--webdriver",
         action='store',
-        choices=['Chrome', 'Firefox', 'Ie', 'Safari'],
+        choices=['Chrome', 'Firefox', 'Ie', 'Safari', 'Edge'],
         required=True)
 
 

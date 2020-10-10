@@ -5,11 +5,6 @@ import selenium.webdriver
 from pytest_bdd import given
 from pages.search_page import GoogleSearchPage
 
-CHROME = 'Chrome'
-FIREFOX = 'Firefox'
-IE = 'Ie'
-SAFARI = 'Safari'
-
 
 @pytest.fixture()
 def webdriver(request):
@@ -25,14 +20,14 @@ def webdriver(request):
     """
     driver = request.config.getoption("--webdriver")
 
-    if driver == CHROME:
+    if driver == 'Chrome':
         browser = selenium.webdriver.Chrome()
-    elif driver == FIREFOX:
+    elif driver == 'Firefox':
         browser = selenium.webdriver.Firefox()
-    elif driver == IE:
+    elif driver == 'Ie':
         browser = selenium.webdriver.Ie()
-    elif driver == SAFARI:
-        browser = selenium.webdriver.Safari()
+    elif driver == 'Edge':
+        browser = selenium.webdriver.Edge()
 
     browser.implicitly_wait(10)
     yield browser
