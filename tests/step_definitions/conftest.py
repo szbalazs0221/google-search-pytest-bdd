@@ -1,4 +1,4 @@
-"""Fixtures for steps definitions."""
+"""Test level fixtures and common step definitions"""
 import pytest
 import selenium.webdriver
 
@@ -7,7 +7,7 @@ from pages.search_page import GoogleSearchPage
 
 CHROME = 'Chrome'
 FIREFOX = 'Firefox'
-IE = 'IE'
+IE = 'Ie'
 SAFARI = 'Safari'
 
 
@@ -38,18 +38,7 @@ def webdriver(request):
     yield browser
     browser.quit()
 
-
-def pytest_addoption(parser):
-    """Custom command line options.
-
-    :param parser: Parser for command line arguments and ini-file values.
-    :type parser: Parser
-    """
-    parser.addoption(
-        "--webdriver",
-        action='store',
-        choices=[CHROME, FIREFOX, IE, SAFARI],
-        required=True)
+# common step definitions
 
 
 @given('the Google Search page is displayed', target_fixture="search_page")

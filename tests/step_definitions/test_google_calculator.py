@@ -1,11 +1,10 @@
 """This module contains step definitions for testing google search
 calculator capabilities"""
 
-from pytest_bdd import scenarios, parsers, given, when, then
-from pages.search_page import GoogleSearchPage
+from pytest_bdd import scenarios, parsers, when, then
 from pages.search_results import GoogleSearchResults
 
-# actually it is not mandatory, because default type is string
+# actually this is not mandatory, because default type is string
 CONVERTERS = {'mathmematical_phrase': str, 'result': str}
 
 scenarios('../features/google_search_calculator.feature',
