@@ -45,7 +45,7 @@ class GoogleSearchPage:
                                                       'div[id=cnsw] iframe')
     agree_button: ClassVar[Tuple[ByObject, str]] = (By.CSS_SELECTOR,
                                                     "div[id=introAgreeButton]")
-    english_lang: ClassVar[Tuple[ByObject, str]] = (By.CSS_SELECTOR, 
+    english_lang: ClassVar[Tuple[ByObject, str]] = (By.CSS_SELECTOR,
                                                     "div[id='SIvCob'] a")
 
     def __init__(self, webdriver: Webdriver) -> None:

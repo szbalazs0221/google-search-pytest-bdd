@@ -38,6 +38,15 @@ def webdriver(request):
 
 @given('the Google Search page is displayed', target_fixture="search_page")
 def display_search_page(webdriver):
+    """Common given step for opening up a new Google search window, accepting
+    all cookies and then switching the language to English, making the browser
+    ready to search.
+
+    :param webdriver: webdriver fixture
+    :type webdriver: selenium.webdriver
+    :return: Search page in a state for ready to search
+    :rtype: :class:`GoogleSearchPage`
+    """
     page = GoogleSearchPage(webdriver)
     page.load()
     page.agree_to_cookies()

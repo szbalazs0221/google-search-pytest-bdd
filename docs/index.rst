@@ -24,9 +24,7 @@ test automation code.
    :caption: Contents:
 
    page_objects
-   step_definitions
    features
-   pytest_setups
 
 
 

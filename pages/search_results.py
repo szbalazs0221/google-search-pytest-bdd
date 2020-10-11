@@ -66,11 +66,16 @@ class GoogleSearchResults:
         return input_field.get_attribute('value')
 
     def show_calculator_display(self) -> int:
+        """Returns the value of the calculator display.
+
+        :return: Text value of the calculator display locator
+        :rtype: int
+        """
         return self.webdriver.find_element(*self.calculator_display).text
 
     @property
     def title(self) -> str:
-        """Property to return the page title
+        """Property to return the page title.
 
         :return: Page title
         :rtype: str
